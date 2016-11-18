@@ -1,0 +1,6 @@
+test-results/
+tmp/
+routes/
+
+.vscode
+.deploy_cfg

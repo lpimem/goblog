@@ -1,0 +1,201 @@
+/* Fonts */
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300|Raleway:600i|Source+Code+Pro:300|Aref+Ruqaa:700|Share+Tech+Mono');
+body {
+    font-size: 16px;
+    line-height: 1.6;
+    font-family: 'Open Sans', Helvetica, arial, sans-serif;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#layout {
+    justify-content: space-between;
+    align-content: space-between;
+    align-items: center;
+    min-height: 100%;
+    width: 100%;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 1em;
+    max-width: 768px;
+}
+
+.header {
+    font-family: 'Aref Ruqaa', serif;
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 1em;
+    padding-bottom: 0;
+    padding-top: 1.8em;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+    letter-spacing: 0.05em;
+}
+
+@media screen and (min-width: 48em) {
+    .header,
+    .content {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 1.4em;
+}
+
+h3 {
+    font-size: 1.3em;
+}
+
+h4 {
+    font-size: 1.2em;
+}
+
+h5 {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: grey;
+}
+
+h6 {
+    font-size: 1.0em;
+    font-weight: bold;
+    font-style: italic;
+    color: grey;
+}
+
+a {
+    text-decoration: none;
+    color: gray;
+    font-style: italic;
+}
+
+p {
+    font-family: 'Open Sans', Helvetica, arial, sans-serif;
+    font-size: 1em;
+    margin-top: 0.1em;
+}
+
+li p {
+    margin: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+}
+
+pre,
+code {
+    /*background: #F5F5F5;*/
+    /*padding: 5px 3px 3px 10px;*/
+    /*border-radius: 10px;*/
+}
+
+code {
+    font-family: 'Share Tech Mono', monospace;
+    ;
+    font-size: 0.8em;
+}
+
+.header a,
+a:hover {
+    text-decoration: none;
+    color: rgb(75, 75, 75)
+}
+
+.title a,
+a:hover {
+    text-decoration: none;
+    color: rgb(75, 75, 75)
+}
+
+.footer {
+    border-top: 1px solid #eee;
+    margin-top: 3.4286em;
+    padding: 1.1429em;
+    background: rgb(250, 250, 250);
+    font-family: "Source Code Pro", monospace;
+    font-size: 0.75em;
+    align-self: flex-end;
+    width: 100%;
+}
+
+.paletext {
+    color: gray;
+}
+
+.mtime {
+    font-style: italic;
+    color: gray;
+}
+
+.row{
+    line-height: 1.5em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.col-md-8, .col-md-8 a {
+    font-style: normal;
+    white-space: nowrap;
+    max-width: 70%;
+}
+
+@media screen and (min-width: 720px) {
+    .mtime {
+        float: right;
+        margin-left: 0.1em;
+        margin-right: 0.6em;
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+}
+
+.yt_container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+.yt_video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
