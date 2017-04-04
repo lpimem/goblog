@@ -1,33 +1,37 @@
 /* Fonts */
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300|Raleway:600i|Source+Code+Pro:300|Aref+Ruqaa:700|Share+Tech+Mono');
+
+html{
+    height: 100%;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
+    position: relative;
+    margin: 0;
+    padding-bottom:6rem;
+    min-height: 100%;
     font-size: 16px;
     line-height: 1.6;
     font-family: 'Open Sans', Helvetica, arial, sans-serif;
 }
 
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
 #layout {
-    justify-content: space-between;
-    align-content: space-between;
-    align-items: center;
-    min-height: 100%;
-    width: 100%;
+    margin: 0 auto;
+    padding-top: 30px;
+    max-width: 768px;
+    width: 94%;
 }
 
 .container {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1em;
-    padding-right: 1em;
     padding-top: 1em;
-    max-width: 768px;
 }
 
 .header {
@@ -41,6 +45,12 @@ body {
     border-bottom: 1px solid #eee;
     background: #fff;
     letter-spacing: 0.05em;
+}
+
+.nav{
+    height: 2.5em;
+    max-width: 768px;
+    margin: 0 auto;
 }
 
 @media screen and (min-width: 48em) {
@@ -112,16 +122,8 @@ li p {
     -webkit-margin-after: 0;
 }
 
-pre,
-code {
-    /*background: #F5F5F5;*/
-    /*padding: 5px 3px 3px 10px;*/
-    /*border-radius: 10px;*/
-}
-
 code {
     font-family: 'Share Tech Mono', monospace;
-    ;
     font-size: 0.8em;
 }
 
@@ -138,13 +140,16 @@ a:hover {
 }
 
 .footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
     border-top: 1px solid #eee;
     margin-top: 3.4286em;
     padding: 1.1429em;
     background: rgb(250, 250, 250);
     font-family: "Source Code Pro", monospace;
     font-size: 0.75em;
-    align-self: flex-end;
     width: 100%;
 }
 
