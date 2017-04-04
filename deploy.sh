@@ -12,7 +12,7 @@ PORT=9000
 
 # generate a random secret string to sign the cookies
 # replace with your own secret key if you have one
-APPSEC=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 64 | head -n 1`
+APPSEC=`env LC_CTYPE=C tr -dc "a-zA-Z0-9-_\$\?" < /dev/urandom | fold -w 64 | head -n 1`
 
 sudo apt-get -y install git mercurial
 
