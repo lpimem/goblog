@@ -34,7 +34,6 @@ func (c App) Doc(title string) revel.Result {
 		mtime = articleInfo.MTimeRepr()
 	}
 	if err != nil {
-		c.Flash.Error(err.Error())
 		html = err.Error()
 	} else {
 		app.ReaderCounts[title] += 1
@@ -44,9 +43,21 @@ func (c App) Doc(title string) revel.Result {
 	return c.Render(title, html, mtime, visitorCount, pageUrl)
 }
 
+type Page struct {
+	Title string
+	Url   string
+}
+
 func init() {
 	revel.InterceptFunc(app.RecordVisit, revel.BEFORE, &App{})
 	revel.TemplateFuncs["SiteTitle"] = func() string {
 		return app.SiteTitle
+	}
+	revel.TemplateFuncs["Pages"] = func() []Page {
+		return []Page{
+			{"Journal", "/"},
+			{"About", "/doc/[Author] About Me"},
+			{"Portfolio", "/doc/[Author] Portfolio"},
+		}
 	}
 }
