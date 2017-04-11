@@ -1,3 +1,7 @@
+[![Go project version](https://badge.fury.io/go/github.com%2Flpimem%2Fgoblog.svg)](https://badge.fury.io/go/github.com%2Flpimem%2Fgoblog)
+
+----
+
 ## Introduction
 
 **GoBlog** is a blogging server to publish you markdown notes as neatly rendered articles. 
