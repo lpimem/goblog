@@ -1,4 +1,5 @@
-[![Go project version](https://badge.fury.io/go/github.com%2Flpimem%2Fgoblog.svg)](https://badge.fury.io/go/github.com%2Flpimem%2Fgoblog)
+[![Go project version](https://badge.fury.io/go/github.com%2Flpimem%2Fgoblog.svg)](https://badge.fury.io/go/github.com%2Flpimem%2Fgoblog) 
+[![Go Report Card](https://goreportcard.com/badge/github.com/lpimem/goblog)](https://goreportcard.com/report/github.com/lpimem/goblog)
 
 ----
 
