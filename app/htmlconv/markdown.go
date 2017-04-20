@@ -35,9 +35,11 @@ func (c markdownconv) ToHTML(bytes []byte) string {
 	htmlFlags |= blackfriday.HTML_SMARTYPANTS_LATEX_DASHES
 
 	renderer := blackfriday.HtmlRenderer(htmlFlags, "", "")
-	unsafeHtml := blackfriday.Markdown(bytes, renderer, extensions)
-	html := c.policy.SanitizeBytes(unsafeHtml)
+	html := blackfriday.Markdown(bytes, renderer, extensions)
+	if c.policy != nil {
+		html = c.policy.SanitizeBytes(html)
+	}
 	return string(html)
 }
 
-var MarkdownConv = markdownconv{policy: makeUGCPolicy()}
+var MarkdownConv = markdownconv{}

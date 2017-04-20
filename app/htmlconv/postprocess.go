@@ -16,7 +16,9 @@ func processYouTubeLink(html string) string {
 }
 
 func processImgLink(html string) string {
-	return strings.Replace(html, "<img src=\"img", "<img src=\"/public/img", -1)
+	html = strings.Replace(html, "<img src=\"img", "<img src=\"/public/img", -1)
+	html = strings.Replace(html, "<img src=\"../img", "<img src=\"/public/img", -1)
+	return html
 }
 
 func PostProcessHTML(html string) string {
