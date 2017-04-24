@@ -1,6 +1,8 @@
 test-results/
 tmp/
 routes/
+log
+public/img
 
 .vscode
 .deploy_cfg

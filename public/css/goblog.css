@@ -1,8 +1,7 @@
 /* Fonts */
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:300|Aref+Ruqaa:700');
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300|Raleway:600i|Source+Code+Pro:300|Aref+Ruqaa:700|Share+Tech+Mono');
-
-html{
+html {
     height: 100%;
     box-sizing: border-box;
 }
@@ -10,28 +9,41 @@ html{
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
+    box-sizing: inherit;
 }
 
 body {
     position: relative;
     margin: 0;
-    padding-bottom:6rem;
+    padding-bottom: 6rem;
     min-height: 100%;
     font-size: 16px;
     line-height: 1.6;
-    font-family: 'Open Sans', Helvetica, arial, sans-serif;
+    font-family: Helvetica, arial, sans-serif;
+    font-weight: lighter;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    background: #EEE;
+    overflow-y: scroll;
 }
 
 #layout {
     margin: 0 auto;
-    padding-top: 30px;
+    padding-top: 1em;
     max-width: 768px;
     width: 94%;
 }
 
 .container {
     padding-top: 1em;
+}
+
+.content-wrapper {
+    background: #fff;
+    padding: 0 2em 1em 2em;
+    box-shadow: 0px 0px 4px rgba(100, 100, 100, 0.25);
+    min-height: 800px;
+    border-radius: 5px;
 }
 
 .header {
@@ -47,13 +59,13 @@ body {
     letter-spacing: 0.05em;
 }
 
-.nav{
+.nav {
     max-width: 768px;
     margin: 0 auto;
     display: inline;
 }
 
-.nav_item{
+.nav_item {
     margin: 0 1em 0.3em 1em;
     display: inline-block;
 }
@@ -66,18 +78,20 @@ body {
     }
 }
 
+@media screen and (max-width: 420px){
+    .nav_item{
+        margin: 0 1em 0.3em 0.09em;
+    }
+}
 
-
-
-h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-    font-family: 'Raleway', sans-serif;
     font-size: 1.8em;
-    margin: 0.35em 0 0.25em 0;
+    font-weight: normal;
+    margin: 0.35em 0 0 0;
 }
 
 h1 {
@@ -87,26 +101,26 @@ h1 {
 }
 
 h2 {
-    font-size: 1.4em;
+    font-size: 1.2em;
 }
 
 h3 {
-    font-size: 1.3em;
+    font-size: 1.2em;
 }
 
 h4 {
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
 h5 {
     font-size: 1.1em;
-    font-weight: bold;
+    font-weight: normal;
     color: grey;
 }
 
 h6 {
     font-size: 1.0em;
-    font-weight: bold;
+    font-weight: normal;
     font-style: italic;
     color: grey;
 }
@@ -114,11 +128,14 @@ h6 {
 a {
     text-decoration: none;
     color: gray;
-    font-style: italic;
+    font-weight: normal;
+}
+
+b, strong {
+    font-weight: normal;
 }
 
 p {
-    font-family: 'Open Sans', Helvetica, arial, sans-serif;
     font-size: 1em;
     margin: 0.1em 0 0.1em 0;
 }
@@ -136,8 +153,10 @@ li p {
 }
 
 code {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.8em;
+    font-family: Geneva, monospace;
+    font-size: 0.85em;
+    border: #CCC 1px solid;
+    padding: 2px;
 }
 
 .header a,
@@ -160,7 +179,7 @@ a:hover {
     border-top: 1px solid #eee;
     margin-top: 3.4286em;
     padding: 1.1429em;
-    background: rgb(250, 250, 250);
+    background: #E6E6E6;
     font-family: "Source Code Pro", monospace;
     font-size: 0.75em;
     width: 100%;
@@ -175,10 +194,11 @@ a:hover {
     color: gray;
 }
 
-.row{
+.row {
     line-height: 1.5em;
     text-overflow: ellipsis;
     overflow: hidden;
+    color: rgb(75, 75, 75);
 }
 
 .col-md-8, .col-md-8 a {
