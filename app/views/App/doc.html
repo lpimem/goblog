@@ -11,12 +11,9 @@
   <h2> {{.title}} </h2>
   <h3 class="paletext"> {{.mtime}} </h3>
   {{raw .html}}
-  {{template "disqus.html"}}
 </div>
 
-
-<!-- highlight -->
-<!--<script src="/public/js/prism.js"></script>-->
+<!-- Code Highlight -->
 <script src="/public/highlight/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 {{template "footer.html" .}}
