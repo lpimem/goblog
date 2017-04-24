@@ -82,6 +82,11 @@ body {
     .nav_item{
         margin: 0 1em 0.3em 0.09em;
     }
+    img{
+        margin: 1em auto;
+        display: block;
+        float: none;
+    }
 }
 
 h2,
