@@ -10,6 +10,8 @@ import (
 
 	"goblog/app/htmlconv"
 
+	"regexp"
+
 	"github.com/bradfitz/slice"
 	"github.com/revel/revel"
 )
@@ -34,6 +36,20 @@ func LoadContent(a *models.ArticleInfo) error {
 	return nil
 }
 
+var _RE_NAME_TAG_SPLIT = regexp.MustCompile(`\[(.*)\][\s\t]*(.*)`)
+
+func splitNameTag(raw string) (tag, name string) {
+	matched := _RE_NAME_TAG_SPLIT.FindStringSubmatch(raw)
+	if len(matched) > 0 {
+		tag = matched[1]
+		name = matched[2]
+	} else {
+		name = strings.Trim(raw, " \t")
+		tag = "random"
+	}
+	return
+}
+
 func reloadArticleList() {
 	for {
 		// revel.INFO.Printf("Reloading article list ...")
@@ -47,10 +63,14 @@ func reloadArticleList() {
 			if info.IsDir() {
 				return nil
 			}
-			name := strings.Split(info.Name(), ".")[0]
+			var (
+				name, tag string
+			)
+			name = strings.Split(info.Name(), ".")[0]
+			tag, name = splitNameTag(name)
 			inCache := ArticleCache[name]
 			if inCache == nil || inCache.MTime.Before(info.ModTime()) {
-				article := models.ArticleInfo{Title: name, Path: path, MTime: info.ModTime()}
+				article := models.ArticleInfo{Tag: tag, Title: name, Path: path, MTime: info.ModTime()}
 				err := LoadContent(&article)
 				if err != nil {
 					revel.ERROR.Println("Cannot load article content from ", article.Path, "Reason:", err)
@@ -70,7 +90,6 @@ func reloadArticleList() {
 				return l[i].MTime.After(l[j].MTime)
 			})
 			ArticleList = l
-			// revel.INFO.Printf("Article list reloaded.")
 		}
 		time.Sleep(time.Duration(reloadDelay) * time.Millisecond)
 	}

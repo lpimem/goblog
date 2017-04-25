@@ -27,6 +27,7 @@ func (c App) Doc(title string) revel.Result {
 	var mtime string
 	var html string
 	var pageUrl string
+	var tag string
 	if app.ArticleCache[title] == nil {
 		err = errors.New("article '" + title + "' not found.")
 		title = "Opps"
@@ -34,6 +35,7 @@ func (c App) Doc(title string) revel.Result {
 		articleInfo := app.ArticleCache[title]
 		html = articleInfo.HTMLContent
 		mtime = articleInfo.MTimeRepr()
+		tag = articleInfo.Tag
 	}
 	if err != nil {
 		html = err.Error()
@@ -42,7 +44,8 @@ func (c App) Doc(title string) revel.Result {
 		pageUrl = routes.App.Doc(title)
 	}
 	visitorCount := app.ReaderCounts[title]
-	return c.Render(title, html, mtime, visitorCount, pageUrl)
+
+	return c.Render(title, html, mtime, visitorCount, pageUrl, tag)
 }
 
 type Page struct {
@@ -58,8 +61,8 @@ func init() {
 	revel.TemplateFuncs["Pages"] = func() []Page {
 		return []Page{
 			{"Journal", "/"},
-			{"About", "/doc/[Author] About Me"},
-			{"Portfolio", "/doc/[Author] Portfolio"},
+			{"About", "/doc/About Me"},
+			{"Portfolio", "/doc/Portfolio"},
 		}
 	}
 	revel.TemplateFuncs["HasPrefix"] = func(a, b string) bool {

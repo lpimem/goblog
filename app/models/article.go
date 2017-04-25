@@ -3,6 +3,7 @@ package models
 import "time"
 
 type ArticleInfo struct {
+	Tag         string
 	Title       string
 	Path        string
 	Content     []byte

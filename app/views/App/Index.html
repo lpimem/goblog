@@ -7,19 +7,32 @@
       {{template "flash.html" .}}
     </div>
   </div>
+  <table>
+    <tbody>
       {{range .articles}}
-        {{if HasPrefix .Title "[Author"}}
+        {{if eq .Tag "Author"}}
         {{else}}
-          <div class='row'>
-              <span class="col-md-8 title">
-                <a href="doc/{{.Title}}">{{.Title}}</a>
-              </span>
+        <tr>
+          <td class='blog_tag' valign='middle' align='right'>
+            {{ if .Tag }}
+              <span class='blog_tag'> {{.Tag}} </span>
+            {{end}}
+          </td>
+          <td class='title' valign='middle'>
+            <span class="col-md-8 title">
+              <a href="doc/{{.Title}}">{{.Title}}</a>
+            </span>
+          </td>
+          <td class='mtime' valign='middle'>
               <span class="col-md-4 mtime hidden-xs paletext">
               {{.MTimeRepr}}
               </span>
-          </div>
+          </td>
+        </tr>
         {{end}}
       {{end}}
+    </tbody>
+  </table>
 </div>
 
 {{template "footer.html" .}}
