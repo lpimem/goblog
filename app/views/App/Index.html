@@ -8,14 +8,17 @@
     </div>
   </div>
       {{range .articles}}
-      <div class='row'>
-          <span class="col-md-8 title">
-            <a href="doc/{{.Title}}">{{.Title}}</a>
-          </span>
-          <span class="col-md-4 mtime hidden-xs paletext">
-          {{.MTimeRepr}}
-          </span>
-      </div>
+        {{if HasPrefix .Title "[Author"}}
+        {{else}}
+          <div class='row'>
+              <span class="col-md-8 title">
+                <a href="doc/{{.Title}}">{{.Title}}</a>
+              </span>
+              <span class="col-md-4 mtime hidden-xs paletext">
+              {{.MTimeRepr}}
+              </span>
+          </div>
+        {{end}}
       {{end}}
 </div>
 

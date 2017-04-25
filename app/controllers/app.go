@@ -5,6 +5,8 @@ import (
 	"goblog/app"
 	"goblog/app/routes"
 
+	"strings"
+
 	"github.com/revel/revel"
 )
 
@@ -59,5 +61,8 @@ func init() {
 			{"About", "/doc/[Author] About Me"},
 			{"Portfolio", "/doc/[Author] Portfolio"},
 		}
+	}
+	revel.TemplateFuncs["HasPrefix"] = func(a, b string) bool {
+		return strings.HasPrefix(a, b)
 	}
 }
