@@ -96,7 +96,7 @@ h5,
 h6 {
     font-size: 1.8em;
     font-weight: normal;
-    margin: 0.35em 0 0 0;
+    margin: 1em 0 0.5em 0;
 }
 
 h1 {
@@ -109,8 +109,18 @@ h2 {
     font-size: 1.2em;
 }
 
+h2:first-of-type {
+    margin-top: 0;
+}
+
 h3 {
     font-size: 1.2em;
+}
+
+h3.paletext{
+  margin: -0.3em 0 0 0;
+  font-size: 1.1em;
+  font-weight: lighter;
 }
 
 h4 {
@@ -142,7 +152,8 @@ b, strong {
 
 p {
     font-size: 1em;
-    margin: 0.1em 0 0.1em 0;
+    margin: 0.1em 0 0.45em 0;
+    line-height: 1.4;
 }
 
 ul {
