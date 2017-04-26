@@ -23,11 +23,14 @@ func (c App) Index() revel.Result {
 }
 
 func (c App) Doc(title string) revel.Result {
-	var err error = nil
-	var mtime string
-	var html string
-	var pageUrl string
-	var tag string
+	var (
+		err     error
+		mtime   string
+		html    string
+		pageUrl string
+		tag     string
+	)
+	_, title = app.SplitNameTag(title)
 	if app.ArticleCache[title] == nil {
 		err = errors.New("article '" + title + "' not found.")
 		title = "Opps"

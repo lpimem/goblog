@@ -38,7 +38,7 @@ func LoadContent(a *models.ArticleInfo) error {
 
 var _RE_NAME_TAG_SPLIT = regexp.MustCompile(`\[(.*)\][\s\t]*(.*)`)
 
-func splitNameTag(raw string) (tag, name string) {
+func SplitNameTag(raw string) (tag, name string) {
 	matched := _RE_NAME_TAG_SPLIT.FindStringSubmatch(raw)
 	if len(matched) > 0 {
 		tag = matched[1]
@@ -67,7 +67,7 @@ func reloadArticleList() {
 				name, tag string
 			)
 			name = strings.Split(info.Name(), ".")[0]
-			tag, name = splitNameTag(name)
+			tag, name = SplitNameTag(name)
 			inCache := ArticleCache[name]
 			if inCache == nil || inCache.MTime.Before(info.ModTime()) {
 				article := models.ArticleInfo{Tag: tag, Title: name, Path: path, MTime: info.ModTime()}
