@@ -50,6 +50,10 @@ func SplitNameTag(raw string) (tag, name string) {
 	return
 }
 
+func RemoveSpace(raw string) string {
+	return strings.Replace(raw, " ", "-", -1)
+}
+
 func reloadArticleList() {
 	for {
 		// revel.INFO.Printf("Reloading article list ...")
@@ -64,22 +68,25 @@ func reloadArticleList() {
 				return nil
 			}
 			var (
-				name, tag string
+				name string
+				tag  string
+				url  string
 			)
 			name = strings.Split(info.Name(), ".")[0]
 			tag, name = SplitNameTag(name)
-			inCache := ArticleCache[name]
+			url = RemoveSpace(name)
+			inCache := ArticleCache[url]
 			if inCache == nil || inCache.MTime.Before(info.ModTime()) {
 				article := models.ArticleInfo{Tag: tag, Title: name, Path: path, MTime: info.ModTime()}
 				err := LoadContent(&article)
 				if err != nil {
 					revel.ERROR.Println("Cannot load article content from ", article.Path, "Reason:", err)
 				}
-				infoCacheNew[name] = &article
+				infoCacheNew[url] = &article
 			} else {
-				infoCacheNew[name] = inCache
+				infoCacheNew[url] = inCache
 			}
-			l = append(l, *infoCacheNew[name])
+			l = append(l, *infoCacheNew[url])
 			return nil
 		})
 		if err != nil {
