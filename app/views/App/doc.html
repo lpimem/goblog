@@ -9,7 +9,12 @@
     </div>
   </div>
   <h2> {{.title}} </h2>
-  <h3 class="paletext"> <span>{{.tag}}</span> {{.mtime}} </h3>
+  <h3 class="paletext">
+    {{if eq .tag "Author"}}
+    {{else}}
+      <span class='blog_tag'>{{.tag}}</span> 
+    {{end}}
+    {{.mtime}} </h3>
   {{raw .html}}
 </div>
 

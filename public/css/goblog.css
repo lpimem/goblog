@@ -214,6 +214,10 @@ span.blog_tag {
     align-content: right;
 }
 
+h3 .blog_tag{
+    font-size: inherit;
+}
+
 tr, td{
     border-collapse: collapse;
     padding: 0;
