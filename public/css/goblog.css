@@ -162,13 +162,13 @@ code {
 }
 
 .header a,
-a:hover {
+.header a:hover {
     text-decoration: none;
     color: rgb(75, 75, 75)
 }
 
 .title a,
-a:hover {
+.title a:hover {
     text-decoration: none;
     color: rgb(75, 75, 75)
 }
