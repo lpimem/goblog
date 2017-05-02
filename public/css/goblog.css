@@ -125,8 +125,11 @@ h6 {
 
 a {
     text-decoration: none;
-    color: gray;
-    font-weight: normal;
+    color: #CF0000;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 b, strong {
