@@ -56,12 +56,12 @@ func RemoveSpace(raw string) string {
 
 func reloadArticleList() {
 	for {
-		// revel.INFO.Printf("Reloading article list ...")
+		// revel.INFO.Errorf("Reloading article list ...")
 		var l []models.ArticleInfo = make([]models.ArticleInfo, 0, 1000)
 		var infoCacheNew = make(map[string]*models.ArticleInfo)
 		err := filepath.Walk(DocBaseDir, func(path string, info os.FileInfo, err error) error {
 			if err != nil {
-				revel.ERROR.Printf("Cannot access file %s, %s", path, err)
+				revel.AppLog.Errorf("Cannot access file %s, %s", path, err)
 				return nil
 			}
 			if info.IsDir() {
@@ -80,7 +80,7 @@ func reloadArticleList() {
 				article := models.ArticleInfo{Tag: tag, Title: name, Path: path, MTime: info.ModTime()}
 				err := LoadContent(&article)
 				if err != nil {
-					revel.ERROR.Println("Cannot load article content from ", article.Path, "Reason:", err)
+					revel.AppLog.Error("Cannot load article content from ", article.Path, "Reason:", err)
 				}
 				infoCacheNew[url] = &article
 			} else {
@@ -90,7 +90,7 @@ func reloadArticleList() {
 			return nil
 		})
 		if err != nil {
-			revel.ERROR.Printf("Error reloading article list: %s", err)
+			revel.AppLog.Errorf("Error reloading article list: %s", err)
 		} else {
 			ArticleCache = infoCacheNew
 			slice.Sort(l, func(i, j int) bool {

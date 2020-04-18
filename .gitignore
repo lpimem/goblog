@@ -7,3 +7,4 @@ public/img
 .vscode
 .deploy_cfg
 .idea
+.configure.sh

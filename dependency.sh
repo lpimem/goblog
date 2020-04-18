@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 
 go get github.com/microcosm-cc/bluemonday
 go get github.com/russross/blackfriday

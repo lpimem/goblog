@@ -1,14 +1,21 @@
-#! /bin/bash 
+#! /bin/bash
 
-# configurations 
+# configurations
 GOPATH=$HOME/go
 INSTANCE_NAME=goblog_prod
 SITE_TITLE="My Blog"
 WORK_DIR=$HOME/$INSTANCE_NAME
 DOC_DIR=$WORK_DIR/doc
-# IP and port this blog will be served at 
+BUILD_DIR=/tmp
+
+# IP and port this blog will be served at
 HOST=127.0.0.1
 PORT=9000
+
+MODE=prod
+if [[ $# -gt 0 ]]; then
+    MODE = $1
+fi
 
 # generate a random secret string to sign the cookies
 # replace with your own secret key if you have one
@@ -40,10 +47,10 @@ gawk "${arg[@]}" -i inplace '\
 /http.port = [ .]*/ {print "http.port = '$PORT'" ;next}\
 {print}' conf/app.conf
 
-# Test Building
-revel build $INSTANCE_NAME /tmp/$INSTANCE_NAME
+revel -X-v build -m $MODE $INSTANCE_NAME $BUILD_DIR/$INSTANCE_NAME
+
 rc=$?
-if [[ $rc != 0 ]]; then 
+if [[ $rc != 0 ]]; then
     echo "cannot build goblog"
     exit $rc
 fi
@@ -51,14 +58,14 @@ fi
 DIR_OK=1
 mkdir -p $WORK_DIR
 rc=$?
-if [[ $rc != 0 ]]; then 
+if [[ $rc != 0 ]]; then
     echo "cannot make working dir, please assign a valid value to WORK_DIR"
     DIR_OK=0
 fi
 
 mkdir -p $DOC_DIR
 rc=$?
-if [[ $rc != 0 ]]; then 
+if [[ $rc != 0 ]]; then
     echo "cannot make document dir, please assign a valid value to DOC_DIR"
     DIR_OK=0
 fi
@@ -67,6 +74,4 @@ if [[ DIR_OK == 0 ]]; then
     exit 1;
 fi
 
-
-# starting an instance running in develop mode.
-revel run $INSTANCE_NAME
+echo "To start the server: $BUILD_DIR/$INSTANCE_NAME/run.sh"
