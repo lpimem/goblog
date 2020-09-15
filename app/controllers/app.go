@@ -68,7 +68,6 @@ func init() {
 		return []Page{
 			{"Journal", "/"},
 			{"About", "/doc/About-Me"},
-			{"Portfolio", "/doc/Portfolio"},
 		}
 	}
 	revel.TemplateFuncs["HasPrefix"] = func(a, b string) bool {
